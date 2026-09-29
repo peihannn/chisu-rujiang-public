@@ -4,7 +4,7 @@
 
 **Chisu Rujiang** is an interactive storytelling prototype exploring how culture can be understood through context, emotion, and choice—not through memorizing isolated facts.
 
-[Experience the live prototype](https://peihannn.github.io/chisu-rujiang-rublic/)
+[Experience the live prototype](https://peihannn.github.io/chisu-rujiang-public/)
 
 ![Chisu Rujiang opening scene](assets/bg_warm.webp)
 

@@ -2,7 +2,7 @@
 
 > Learning begins with context. When learners build stories together, learning becomes cultural exchange.
 
-**Chisu Rujiang** is an interactive storytelling prototype exploring how culture can be understood through context, emotion, and choice—not through memorizing isolated facts.
+**Chisu Rujiang** is an interactive storytelling prototype exploring how culture can be understood through context, emotion, and choice rather than through memorizing isolated facts.
 
 [Experience the live prototype](https://peihannn.github.io/chisu-rujiang-public/)
 
@@ -16,14 +16,14 @@ The prototype invites the learner into a Chinese-inspired visual narrative. Thro
 
 The larger vision has two stages:
 
-1. **Contextual learning** — stories help learners understand ideas through characters, environments, emotions, and consequences.
-2. **Cultural exchange through co-building** — students from different backgrounds create stories together, contributing their languages, family histories, traditions, and lived experiences.
+1. **Contextual learning:** Stories help learners understand ideas through characters, environments, emotions, and consequences.
+2. **Cultural exchange through co-building:** Students from different backgrounds create stories together, contributing their languages, family histories, traditions, and lived experiences.
 
 No participant is expected to represent an entire country or culture. Each person contributes one authentic perspective to a shared, evolving story world.
 
 ## Why AI
 
-ChatGPT helped turn the initial concept into a working prototype. In the next stage, AI could help participants prototype scenes, connect ideas, and experiment across media—while the cultural meaning and human stories remain theirs.
+ChatGPT helped turn the initial concept into a working prototype. In the next stage, AI could help participants prototype scenes, connect ideas, and experiment across media, while the cultural meaning and human stories remain theirs.
 
 The goal is not to use AI to make facts easier to memorize. It is to make meaning easier to experience, discuss, and build together.
 

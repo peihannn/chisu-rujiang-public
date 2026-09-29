@@ -1,0 +1,40 @@
+name: Sync clean public site
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out public repository
+        uses: actions/checkout@v4
+
+      - name: Check out source repository
+        uses: actions/checkout@v4
+        with:
+          repository: peihannn/chisu-rujiang
+          path: source
+
+      - name: Copy only the public website
+        shell: bash
+        run: |
+          cp -R source/xhs-dist/. .
+          touch .nojekyll
+          echo "IyDlsLrntKDlhaXmsZ8gwrcgQ2hpc3UgUnVqaWFuZwoKPiBMZWFybmluZyBiZWdpbnMgd2l0aCBjb250ZXh0LiBXaGVuIGxlYXJuZXJzIGJ1aWxkIHN0b3JpZXMgdG9nZXRoZXIsIGxlYXJuaW5nIGJlY29tZXMgY3VsdHVyYWwgZXhjaGFuZ2UuCgoqKkNoaXN1IFJ1amlhbmcqKiBpcyBhbiBpbnRlcmFjdGl2ZSBzdG9yeXRlbGxpbmcgcHJvdG90eXBlIGV4cGxvcmluZyBob3cgY3VsdHVyZSBjYW4gYmUgdW5kZXJzdG9vZCB0aHJvdWdoIGNvbnRleHQsIGVtb3Rpb24sIGFuZCBjaG9pY2XigJRub3QgdGhyb3VnaCBtZW1vcml6aW5nIGlzb2xhdGVkIGZhY3RzLgoKW0V4cGVyaWVuY2UgdGhlIGxpdmUgcHJvdG90eXBlXShodHRwczovL3BlaWhhbm5uLmdpdGh1Yi5pby9jaGlzdS1ydWppYW5nLXJ1YmxpYy8pCgohW0NoaXN1IFJ1amlhbmcgb3BlbmluZyBzY2VuZV0oYXNzZXRzL2JnX3dhcm0ud2VicCkKCiMjIFRoZSBpZGVhCgpUaGlzIHByb2plY3QgYmVnYW4gd2l0aCBhIHF1ZXN0aW9uOiB3aGF0IGlmIGxlYXJuaW5nIGZlbHQgbGVzcyBsaWtlIHJlY2FsbGluZyB0aGUgcmlnaHQgYW5zd2VyIGFuZCBtb3JlIGxpa2UgZW50ZXJpbmcgYSBzdG9yeT8KClRoZSBwcm90b3R5cGUgaW52aXRlcyB0aGUgbGVhcm5lciBpbnRvIGEgQ2hpbmVzZS1pbnNwaXJlZCB2aXN1YWwgbmFycmF0aXZlLiBUaHJvdWdoIHNtYWxsIGNob2ljZXMgYW5kIGludGVyYWN0aW9ucywgdGhlIGxlYXJuZXIgZW5jb3VudGVycyBtZWFuaW5nIGFzIHBhcnQgb2YgYSBzaXR1YXRpb24gcmF0aGVyIHRoYW4gYXMgaW5mb3JtYXRpb24gZGV0YWNoZWQgZnJvbSBpdHMgY3VsdHVyYWwgY29udGV4dC4KClRoZSBsYXJnZXIgdmlzaW9uIGhhcyB0d28gc3RhZ2VzOgoKMS4gKipDb250ZXh0dWFsIGxlYXJuaW5nKiog4oCUIHN0b3JpZXMgaGVscCBsZWFybmVycyB1bmRlcnN0YW5kIGlkZWFzIHRocm91Z2ggY2hhcmFjdGVycywgZW52aXJvbm1lbnRzLCBlbW90aW9ucywgYW5kIGNvbnNlcXVlbmNlcy4KMi4gKipDdWx0dXJhbCBleGNoYW5nZSB0aHJvdWdoIGNvLWJ1aWxkaW5nKiog4oCUIHN0dWRlbnRzIGZyb20gZGlmZmVyZW50IGJhY2tncm91bmRzIGNyZWF0ZSBzdG9yaWVzIHRvZ2V0aGVyLCBjb250cmlidXRpbmcgdGhlaXIgbGFuZ3VhZ2VzLCBmYW1pbHkgaGlzdG9yaWVzLCB0cmFkaXRpb25zLCBhbmQgbGl2ZWQgZXhwZXJpZW5jZXMuCgpObyBwYXJ0aWNpcGFudCBpcyBleHBlY3RlZCB0byByZXByZXNlbnQgYW4gZW50aXJlIGNvdW50cnkgb3IgY3VsdHVyZS4gRWFjaCBwZXJzb24gY29udHJpYnV0ZXMgb25lIGF1dGhlbnRpYyBwZXJzcGVjdGl2ZSB0byBhIHNoYXJlZCwgZXZvbHZpbmcgc3Rvcnkgd29ybGQuCgojIyBXaHkgQUkKCkNoYXRHUFQgaGVscGVkIHR1cm4gdGhlIGluaXRpYWwgY29uY2VwdCBpbnRvIGEgd29ya2luZyBwcm90b3R5cGUuIEluIHRoZSBuZXh0IHN0YWdlLCBBSSBjb3VsZCBoZWxwIHBhcnRpY2lwYW50cyBwcm90b3R5cGUgc2NlbmVzLCBjb25uZWN0IGlkZWFzLCBhbmQgZXhwZXJpbWVudCBhY3Jvc3MgbWVkaWHigJR3aGlsZSB0aGUgY3VsdHVyYWwgbWVhbmluZyBhbmQgaHVtYW4gc3RvcmllcyByZW1haW4gdGhlaXJzLgoKVGhlIGdvYWwgaXMgbm90IHRvIHVzZSBBSSB0byBtYWtlIGZhY3RzIGVhc2llciB0byBtZW1vcml6ZS4gSXQgaXMgdG8gbWFrZSBtZWFuaW5nIGVhc2llciB0byBleHBlcmllbmNlLCBkaXNjdXNzLCBhbmQgYnVpbGQgdG9nZXRoZXIuCgojIyBGdXR1cmUgZGlyZWN0aW9uCgpUaGlzIHByb3RvdHlwZSBjYW4gZ3JvdyBpbnRvIGEgY29sbGFib3JhdGl2ZSBzdG9yeXRlbGxpbmctYW5kLWxlYXJuaW5nIHBsYXRmb3JtIHRocm91Z2g6CgotIGNyb3NzLWN1bHR1cmFsIHN0b3J5LWJ1aWxkaW5nIHdvcmtzaG9wczsKLSBzdHVkZW50IG9yZ2FuaXphdGlvbiBwYXJ0bmVyc2hpcHM7Ci0gc3R1ZGlvIGhvdXJzIGZvciByYXBpZCBwcm90b3R5cGluZzsKLSBzaG93Y2FzZXMgb2Ygc3RvcmllcyBjcmVhdGVkIGFjcm9zcyBsYW5ndWFnZXMgYW5kIGRpc2NpcGxpbmVzLgoKIyMgUnVuIGxvY2FsbHkKClRoaXMgaXMgYSBzdGF0aWMgd2Vic2l0ZSB3aXRoIG5vIGJ1aWxkIHN0ZXAuIE9wZW4gYGluZGV4Lmh0bWxgIGluIGEgbW9kZXJuIGJyb3dzZXIsIG9yIHNlcnZlIHRoZSBkaXJlY3Rvcnkgd2l0aCBhbnkgc3RhdGljIHdlYiBzZXJ2ZXIuCgojIyBQcm9qZWN0IHN0YXR1cwoKRWFybHkgaW50ZXJhY3RpdmUgcHJvdG90eXBlLiBGZWVkYmFjayBhbmQgY29sbGFib3JhdGlvbiBjb252ZXJzYXRpb25zIGFyZSB3ZWxjb21lLgoKIyMgUmlnaHRzCgpUaGUgc291cmNlIGlzIHB1YmxpYyBmb3IgZGVtb25zdHJhdGlvbiBhbmQgZXZhbHVhdGlvbi4gQWxsIGFydHdvcmssIHdyaXRpbmcsIGF1ZGlvLCBhbmQgY29kZSByZW1haW4gdGhlIHByb3BlcnR5IG9mIHRoZSBwcm9qZWN0IGNyZWF0b3IgdW5sZXNzIG90aGVyd2lzZSBub3RlZC4gUGxlYXNlIGFzayBiZWZvcmUgcmV1c2luZyBvciByZWRpc3RyaWJ1dGluZyB0aGVtLgo=" | base64 --decode > README.md
+
+      - name: Commit synchronized site
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .nojekyll README.md index.html app.js audio-data.js assets
+          if git diff --cached --quiet; then
+            echo "No site changes to publish."
+            exit 0
+          fi
+          git commit -m "Publish clean storytelling prototype"
+          git push
